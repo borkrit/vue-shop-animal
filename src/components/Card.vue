@@ -14,12 +14,18 @@
 
                 
 
-            <select name="" id="" v-model="currence" >
-                <option   v-for="item in prices" :value="item.value" > 
-                    {{ item.cur  }}
+            <select name="category" id="" > 
+                <option   v-for="category in shop.category" :value="category.name" > 
+                    {{ category.name }}
                 </option>
             </select>
 
+
+
+            <input type="text" v-model="categoryName">
+
+            <button @click="{ shop.addCattegory(categoryName); categoryName=''}
+               "> add</button>
 
         </div>
 
@@ -29,14 +35,25 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+import { useShopStore } from '../store/Store'
 
 export default ({
+    setup(){
+        const shop = useShopStore()
+
+
+        return{
+            shop,
+        }
+    },
     
-
-
     data(){
+
+
         
         return{
+            categoryName: '',
             product: 'Title product ',
             image:'src/assets/1.jpg',
             currence:'12 pln',
