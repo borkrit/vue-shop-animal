@@ -51,6 +51,16 @@ export const useShopStore = defineStore("shopStore", {
       console.log(this.$state.category)
     },
 
+    searchProduct(e){
+        const data =  this.$state.products.filter((item)=> 
+            item['title'].toLowerCase().includes(e.toLowerCase())
+        
+           
+        )
+        return data
+
+    },
+
     addProduct(title, price, desc, category){
         let id = this.$state.category.length + 1;
         const newElement = {
