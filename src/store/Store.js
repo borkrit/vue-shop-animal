@@ -6,6 +6,8 @@ export const useShopStore = defineStore("shopStore", {
       { id: 1, name: "House" },
       { id: 2, name: "Animals" },
     ],
+    search:'',
+    notFound:false,
 
     products: [
       {
@@ -38,7 +40,7 @@ export const useShopStore = defineStore("shopStore", {
         price: 1100,
         currence: "pln",
         description: "Beautiful gold fish",
-        category: "Animal",
+        category: "Animals",
       },
     ],
   }),
@@ -51,12 +53,19 @@ export const useShopStore = defineStore("shopStore", {
       console.log(this.$state.category)
     },
 
-    searchProduct(e){
+    searchProduct(e, type ='title'){
         const data =  this.$state.products.filter((item)=> 
-            item['title'].toLowerCase().includes(e.toLowerCase())
+            item[type].toLowerCase().includes(e.toLowerCase())
         
            
         )
+        if(data.length == 0){
+          this.notFound = true;
+        }else{
+          this.notFound =false;
+          
+        }
+        console.log(data)
         return data
 
     },
