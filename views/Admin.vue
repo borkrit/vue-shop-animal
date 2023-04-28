@@ -144,15 +144,15 @@ export default ({
     methods:{
         filter: function(e){
 
-            const r = this.shop.products.filter(item => item.category == e);
-            this.prod=r
+            const product = this.shop.products.filter(item => item.category == e);
+            this.prod=product
 
         },
 
         searchFilter: function(e){
 
-            const r = this.shop.products.filter((item) => item['title'].toLowerCase().includes(e.toLowerCase()))
-            this.prod=r;
+            const product = this.shop.products.filter((item) => item['title'].toLowerCase().includes(e.toLowerCase()))
+            this.prod=product;
 
         },
        
