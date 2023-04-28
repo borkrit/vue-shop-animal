@@ -9,7 +9,7 @@ export default {
 
 <template>
   <header class="container">
-    <a href="/home" class="logo"> AnimalShop </a>
+    <a  class="logo"> AnimalShop </a>
     <nav>
 
 
