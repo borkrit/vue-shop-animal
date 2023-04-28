@@ -17,6 +17,10 @@
                 </select>
                 <button @click="filter(cater)" >filter</button>
             </div>
+            <button @click="priceSort('small')" > Filter price by Small to Hide </button>
+
+            <button @click="priceSort('hide')" > Filter price by Hide to small </button>
+
         
         </div>
 
@@ -150,11 +154,29 @@ export default ({
         },
 
         searchFilter: function(e){
-
             const product = this.shop.products.filter((item) => item['title'].toLowerCase().includes(e.toLowerCase()))
+
             this.prod=product;
 
         },
+        priceSort: function(e){
+
+            if ( e === 'small'){
+
+                this.shop.products.sort(
+    (p1, p2) => 
+    (p2.price < p1.price) ? 1 : (p2.price > p1.price) ? -1 : 0)
+            }
+            if(e === 'hide'){
+
+            this.shop.products.sort(
+    (p1, p2) => 
+    (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0)
+            }
+
+
+
+        }
        
 
         

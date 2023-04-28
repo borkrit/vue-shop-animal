@@ -21,7 +21,7 @@ export const useShopStore = defineStore("shopStore", {
       {
         _id: 2,
         title: "House for cat",
-        price: 300,
+        price: 100,
         currence: "pln",
         description: "glass house for cat ",
         category: "House",
