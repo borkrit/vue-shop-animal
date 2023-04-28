@@ -8,10 +8,11 @@ export default {
 </script>
 
 <template>
-  <header class="container">
-    <a  class="logo"> AnimalShop </a>
-    <nav>
+  <header >
+    <div class="container">
 
+      <nav class="navigation__top">
+      <a  class="logo"> AnimalShop </a>
 
       <ul class="navigation__body">
         <li>
@@ -22,6 +23,8 @@ export default {
         </li>
       </ul>
     </nav>
+    </div>
+    
   </header>
 
  
@@ -31,11 +34,18 @@ export default {
 <style>
   .container{
     max-width: 1350px;
-    padding: 0 1em;
+    /* padding: 0 auto; */
+    margin: 0 auto;
+    width: 100%;
+  }
+  .navigation__top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    place-items: center;
   }
   header{
     display: flex;
-    justify-content: space-between;
     height: 50px;
     background-color: rgb(172, 216, 128);
     place-items: center;

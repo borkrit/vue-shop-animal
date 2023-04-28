@@ -1,15 +1,28 @@
 <template>
     <div class="dashbord">
 
-        <h1>Admin</h1>
+        <h1>Admin dashbord</h1>
 
-        <div class="search">
-            <label class="search">Search</label>
-
-
-            <input v-model="search" @keyup="searchFilter(search)"  placeholder="search for name product" />
-
+        <div class="filters">
+            <div class="filters__search">
+                <label >Search</label>
+            <input  v-model="search" @keyup="searchFilter(search)"  placeholder="search for name product" />
+        
+            </div>
+            
+            <div class="filters__category">
+                <select name="" id="" v-model="cater"  >
+                    <option    value="">Choose category</option>
+                    <option v-for="cat in shop.category"   >{{ cat.name }}</option>
+                </select>
+                <button @click="filter(cater)" >filter</button>
+            </div>
+        
         </div>
+
+
+
+
         <div class="product__list">
             <div v-for="product in prod" class="product__item">
                 <!-- <small>category - {{ product.category }}</small> -->
@@ -35,32 +48,58 @@
             <router-link to="/admin/add-product"> Add product</router-link>
 
 
-            <div class="filter">
-          
-
-            <select name="" id="" v-model="cater" >
-            <option    value="">Choose category</option>
-
-            <option v-for="cat in shop.category"   >{{ cat.name }}</option>
-
-        </select>
-            <button @click="filter(cater)" >filter</button>
-        </div>
+            
 
 
         </nav>
 
-        
-
-
-
-
+    
     </div>
 </template>
 
 <style>
 .dashbord {
     padding: 1em;
+}
+.filters{
+    display: flex;
+    justify-content: space-around;
+    margin: 10px auto;
+}
+
+@media  ( max-width: 450px) {
+    
+    .filters{
+        flex-direction: column;
+        width: max-content;
+    }
+}
+
+
+.filters__search{
+    position: relative;
+}
+.filters__search label{
+    position: absolute;
+    top: -2px;
+    left: 5px;
+    z-index: 3;
+    background-color: white;
+}
+.filters__search input{
+    max-width: 300px;
+    width: 100%;
+    padding: 10px;
+}
+.filters__category{
+    display: flex;
+    border: 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.filters__category select{
+    padding: 10px;
+    border:none;
 }
 
 .product__list {
@@ -85,7 +124,6 @@
 </style>
 
 <script>
-import { ref } from 'vue'
 import { useShopStore } from '../src/store/Store'
 
 export default ({
