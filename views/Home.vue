@@ -73,6 +73,8 @@ input {
 
     <div class="product__list">
         <div v-if="ctr == ''"   v-for="product in shop.searchProduct(search)" class="product__item">
+            
+            <router-link :to="`/product/${product._id}`">
             <!-- <small>category - {{ product.category }}</small> -->
             <img :src="'../../src/assets/' + product.category + '.svg'"
                 :class="'product__image product__' + product.category" />
@@ -86,10 +88,12 @@ input {
             <p class="product__price">
                 Price - {{ product.price }} {{ product.currence }}
             </p>
+            </router-link>
         </div>
 
         <div v-else  v-for="product in shop.searchProduct(ctr, 'category')" class="product__item">
-            <!-- <small>category - {{ product.category }}</small> -->
+           <router-link :to="`/product/${product._id}`">
+             <!-- <small>category - {{ product.category }}</small> -->
             <img :src="'../../src/assets/' + product.category + '.svg'"
                 :class="'product__image product__' + product.category" />
             <p class="product__title">
@@ -100,14 +104,14 @@ input {
             </p>
 
             <p class="product__price">
-                Price - {{ product.price }} {{ product.currence }}
+                Priceds - {{ product.price }} {{ product.currence }}
             </p>
+            </router-link>
         </div>
 
         <div v-if="shop.notFound" > 
             NOT FOUND
         </div>
-
 
 
 
