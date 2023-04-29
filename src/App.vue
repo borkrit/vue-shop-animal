@@ -16,7 +16,7 @@ export default {
 
       <ul class="navigation__body">
         <li>
-          <router-link to="/home" >Shop </router-link>
+          <router-link to="/" >Shop </router-link>
         </li>
         <li>
           <router-link to="/admin" >admin </router-link>

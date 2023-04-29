@@ -5,23 +5,23 @@
 
         <div class="filters">
             <div class="filters__search">
-                <label >Search</label>
-            <input  v-model="search" @keyup="searchFilter(search)"  placeholder="search for name product" />
-        
+                <label>Search</label>
+                <input v-model="search" @keyup="searchFilter(search)" placeholder="search for name product" />
+
             </div>
-            
+
             <div class="filters__category">
-                <select name="" id="" v-model="cater"  >
-                    <option    value="">Choose category</option>
-                    <option v-for="cat in shop.category"   >{{ cat.name }}</option>
+                <select name="" id="" v-model="cater">
+                    <option value="">Choose category</option>
+                    <option v-for="cat in shop.category">{{ cat.name }}</option>
                 </select>
-                <button @click="filter(cater)" >filter</button>
+                <button @click="filter(cater)">filter</button>
             </div>
-            <button @click="priceSort('small')" > Filter price by Small to Hide </button>
+            <button @click="priceSort('small')"> Filter price by Small to Hide </button>
 
-            <button @click="priceSort('hide')" > Filter price by Hide to small </button>
+            <button @click="priceSort('hide')"> Filter price by Hide to small </button>
 
-        
+
         </div>
 
 
@@ -52,12 +52,12 @@
             <router-link to="/admin/add-product"> Add product</router-link>
 
 
-            
+
 
 
         </nav>
 
-    
+
     </div>
 </template>
 
@@ -65,45 +65,50 @@
 .dashbord {
     padding: 1em;
 }
-.filters{
+
+.filters {
     display: flex;
     justify-content: space-around;
     margin: 10px auto;
 }
 
-@media  ( max-width: 450px) {
-    
-    .filters{
+@media (max-width: 450px) {
+
+    .filters {
         flex-direction: column;
         width: max-content;
     }
 }
 
 
-.filters__search{
+.filters__search {
     position: relative;
 }
-.filters__search label{
+
+.filters__search label {
     position: absolute;
     top: -2px;
     left: 5px;
     z-index: 3;
     background-color: white;
 }
-.filters__search input{
+
+.filters__search input {
     max-width: 300px;
     width: 100%;
     padding: 10px;
 }
-.filters__category{
+
+.filters__category {
     display: flex;
     border: 1px solid;
     border-radius: 5px;
     cursor: pointer;
 }
-.filters__category select{
+
+.filters__category select {
     padding: 10px;
-    border:none;
+    border: none;
 }
 
 .product__list {
@@ -119,9 +124,10 @@
     flex-direction: column;
     max-width: 20%;
 }
-.filter{
-}
-.filter button{
+
+.filter {}
+
+.filter button {
     width: 100%;
     margin-top: 10px;
 }
@@ -139,47 +145,47 @@ export default ({
     },
     data() {
         return {
-            search:'',
+            search: '',
             prod: this.shop.products,
-            cater:'',
+            cater: '',
 
         };
     },
-    methods:{
-        filter: function(e){
+    methods: {
+        filter: function (e) {
 
             const product = this.shop.products.filter(item => item.category == e);
-            this.prod=product
+            this.prod = product
 
         },
 
-        searchFilter: function(e){
+        searchFilter: function (e) {
             const product = this.shop.products.filter((item) => item['title'].toLowerCase().includes(e.toLowerCase()))
 
-            this.prod=product;
+            this.prod = product;
 
         },
-        priceSort: function(e){
+        priceSort: function (e) {
 
-            if ( e === 'small'){
+            if (e === 'small') {
 
-                this.shop.products.sort(
-    (p1, p2) => 
-    (p2.price < p1.price) ? 1 : (p2.price > p1.price) ? -1 : 0)
+                this.prod = this.shop.products.sort(
+                    (p1, p2) =>
+                        (p2.price < p1.price) ? 1 : (p2.price > p1.price) ? -1 : 0)
             }
-            if(e === 'hide'){
+            if (e === 'hide') {
 
-            this.shop.products.sort(
-    (p1, p2) => 
-    (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0)
+                this.prod = this.shop.products.sort(
+                    (p1, p2) =>
+                        (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0)
             }
 
 
 
         }
-       
 
-        
+
+
     }
 
 })
