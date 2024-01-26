@@ -76,7 +76,7 @@ input {
             
             <router-link :to="`/product/${product._id}`" :totalPrice="totalPrice"  >
             <!-- <small>category - {{ product.category }}</small> -->
-            <img :src="'../../src/assets/' + product.category + '.svg'"
+            <img :src="'/' + product.category + '.svg'"
                 :class="'product__image product__' + product.category" />
             <p class="product__title">
                 {{ product.title }}
@@ -94,7 +94,7 @@ input {
         <div v-else  v-for="product in shop.searchProduct(ctr, 'category')" class="product__item">
            <router-link :to="`/product/${product._id}`">
              <!-- <small>category - {{ product.category }}</small> -->
-            <img :src="'../../src/assets/' + product.category + '.svg'"
+            <img :src="'/' + product.category + '.svg'"
                 :class="'product__image product__' + product.category" />
             <p class="product__title">
                 {{ product.title }}
