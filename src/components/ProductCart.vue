@@ -10,7 +10,6 @@
        <p class="product-details__price">
          {{ productShop.price }}
        </p>
-       
     </div>
 
 </template>
@@ -43,9 +42,15 @@ export default{
         const shop = useShopStore();
 
         return {
-            shop
+            shop,
         }
     },
+    props:[
+        'totalPrice'
+    ],
+
+
+
     computed :{
         productId(){
             return parseInt(this.$route.params.id)
@@ -55,6 +60,6 @@ export default{
             return this.shop.products.find(product=> product._id === this.productId)
         }
 
-    }
+    },
 }
 </script>

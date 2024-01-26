@@ -15,7 +15,7 @@ export default createRouter ({
         {path: '/admin', component: Admin},
         {path:'/admin/add-category', component: AddCategory},
         {path:'/admin/add-product', component : AddProduct},
-        {path: '/product/:id', component: ProductCart}
+        {path: '/product/:id', component: ProductCart, props:true}
 
     ]
 })

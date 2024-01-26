@@ -57,7 +57,7 @@ input {
 
         <div v-for="ct in shop.category" @click="ctr = ct.name" class="category__item">
             <p>{{ ct.name }}</p>
-            <img :src="'../../src/assets/' + ct.name + '.svg'" :class="'category__image category__' + ct.name" />
+            <img :src="'/public/' + ct.name + '.svg'" :class="'category__image category__' + ct.name" />
 
         </div>
     </div>
@@ -74,7 +74,7 @@ input {
     <div class="product__list">
         <div v-if="ctr == ''"   v-for="product in shop.searchProduct(search)" class="product__item">
             
-            <router-link :to="`/product/${product._id}`">
+            <router-link :to="`/product/${product._id}`" :totalPrice="totalPrice"  >
             <!-- <small>category - {{ product.category }}</small> -->
             <img :src="'../../src/assets/' + product.category + '.svg'"
                 :class="'product__image product__' + product.category" />
@@ -104,8 +104,9 @@ input {
             </p>
 
             <p class="product__price">
-                Priceds - {{ product.price }} {{ product.currence }}
+                Price- {{ product.price }} {{ product.currence }}
             </p>
+            
             </router-link>
         </div>
 
@@ -132,9 +133,11 @@ export default ({
     data() {
         return {
             search: '',
-            ctr:''
+            ctr:'',
+            totalPrice:0,
         }
     },
+ 
     components: { Search, Category }
 })
 
