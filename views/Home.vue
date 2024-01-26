@@ -57,7 +57,7 @@ input {
 
         <div v-for="ct in shop.category" @click="ctr = ct.name" class="category__item">
             <p>{{ ct.name }}</p>
-            <img :src="'/public/' + ct.name + '.svg'" :class="'category__image category__' + ct.name" />
+            <img :src="'/' + ct.name + '.svg'" :class="'category__image category__' + ct.name" />
 
         </div>
     </div>
